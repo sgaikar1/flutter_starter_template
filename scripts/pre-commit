@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Pre-commit hook for Flutter projects
+# Runs formatting, analysis, and tests before allowing commit
+
+set -e
+
+echo "🔍 Running pre-commit checks..."
+
+# Format check
+echo "📝 Checking code formatting..."
+if ! dart format --set-exit-if-changed lib/ test/; then
+    echo "❌ Code formatting issues found."
+    echo "Run 'dart format lib/ test/' to fix."
+    exit 1
+fi
+echo "✓ Code formatting passed"
+
+# Analyze
+echo "🔬 Running static analysis..."
+if ! flutter analyze; then
+    echo "❌ Analysis found issues."
+    echo "Fix the issues above before committing."
+    exit 1
+fi
+echo "✓ Static analysis passed"
+
+# Optionally run tests (commented out by default as it can be slow)
+# Uncomment if you want tests to run on every commit
+# echo "🧪 Running tests..."
+# if ! flutter test; then
+#     echo "❌ Tests failed."
+#     echo "Fix failing tests before committing."
+#     exit 1
+# fi
+# echo "✓ Tests passed"
+
+echo "✅ All pre-commit checks passed!"

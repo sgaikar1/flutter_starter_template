@@ -1,0 +1,142 @@
+{
+  "@@locale": "en",
+  "appTitle": "{{PROJECT_NAME}}",
+  "@appTitle": {
+    "description": "The application title"
+  },
+  
+  "onboardingTitle": "Welcome to {{PROJECT_NAME}}",
+  "@onboardingTitle": {
+    "description": "Onboarding screen title"
+  },
+  "onboardingSubtitle": "Your journey starts here",
+  "@onboardingSubtitle": {
+    "description": "Onboarding screen subtitle"
+  },
+  "onboardingSkip": "Skip",
+  "@onboardingSkip": {
+    "description": "Skip button on onboarding"
+  },
+  "onboardingNext": "Next",
+  "@onboardingNext": {
+    "description": "Next button on onboarding"
+  },
+  "onboardingGetStarted": "Get Started",
+  "@onboardingGetStarted": {
+    "description": "Get started button on onboarding"
+  },
+  
+  "loginTitle": "Welcome Back",
+  "@loginTitle": {
+    "description": "Login screen title"
+  },
+  "loginEmail": "Email",
+  "@loginEmail": {
+    "description": "Email field label"
+  },
+  "loginPassword": "Password",
+  "@loginPassword": {
+    "description": "Password field label"
+  },
+  "loginButton": "Login",
+  "@loginButton": {
+    "description": "Login button text"
+  },
+  "loginForgotPassword": "Forgot Password?",
+  "@loginForgotPassword": {
+    "description": "Forgot password link"
+  },
+  "loginLoading": "Logging in...",
+  "@loginLoading": {
+    "description": "Login loading message"
+  },
+  
+  "homeTitle": "Home",
+  "@homeTitle": {
+    "description": "Home screen title"
+  },
+  "homeRefresh": "Pull to refresh",
+  "@homeRefresh": {
+    "description": "Pull to refresh message"
+  },
+  "homeEmpty": "No items found",
+  "@homeEmpty": {
+    "description": "Empty state message"
+  },
+  
+  "detailTitle": "Details",
+  "@detailTitle": {
+    "description": "Detail screen title"
+  },
+  
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+  "settingsTheme": "Theme",
+  "@settingsTheme": {
+    "description": "Theme settings section"
+  },
+  "settingsThemeLight": "Light",
+  "@settingsThemeLight": {
+    "description": "Light theme option"
+  },
+  "settingsThemeDark": "Dark",
+  "@settingsThemeDark": {
+    "description": "Dark theme option"
+  },
+  "settingsThemeSystem": "System",
+  "@settingsThemeSystem": {
+    "description": "System theme option"
+  },
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {
+    "description": "Language settings section"
+  },
+  "settingsAbout": "About",
+  "@settingsAbout": {
+    "description": "About section"
+  },
+  "settingsLogout": "Logout",
+  "@settingsLogout": {
+    "description": "Logout button"
+  },
+  
+  "errorGeneric": "Something went wrong. Please try again.",
+  "@errorGeneric": {
+    "description": "Generic error message"
+  },
+  "errorNetwork": "Network error. Please check your connection.",
+  "@errorNetwork": {
+    "description": "Network error message"
+  },
+  "errorAuth": "Authentication failed. Please login again.",
+  "@errorAuth": {
+    "description": "Authentication error message"
+  },
+  "errorNotFound": "Resource not found.",
+  "@errorNotFound": {
+    "description": "Not found error message"
+  },
+  
+  "commonRetry": "Retry",
+  "@commonRetry": {
+    "description": "Retry button text"
+  },
+  "commonCancel": "Cancel",
+  "@commonCancel": {
+    "description": "Cancel button text"
+  },
+  "commonOk": "OK",
+  "@commonOk": {
+    "description": "OK button text"
+  },
+  "commonSave": "Save",
+  "@commonSave": {
+    "description": "Save button text"
+  },
+  "commonLoading": "Loading...",
+  "@commonLoading": {
+    "description": "Loading message"
+  }
+}
