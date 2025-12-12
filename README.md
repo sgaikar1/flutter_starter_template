@@ -32,11 +32,11 @@ A production-ready Flutter starter template with feature-first architecture, com
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/sgaikar1/flutter_starter_template.git <app_repo_name_in_your_local_machine>
-   cd app_repo_name_in_your_local_machine
+   git clone <template-url> my_awesome_app
+   cd my_awesome_app
    ```
 
-2. **Run the scaffold script:** considering app repo name is My Awesome App
+2. **Run the scaffold script:**
    ```bash
    ./scripts/scaffold_new_app.sh \
      --name "My Awesome App" \
