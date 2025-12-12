@@ -32,8 +32,8 @@ A production-ready Flutter starter template with feature-first architecture, com
 
 1. **Clone this repository:**
    ```bash
-   git clone <template-url> my_awesome_app
-   cd my_awesome_app
+   git clone flutter_starter_template <app_repo_name_in_your_local_machine>
+   cd app_repo_name_in_your_local_machine
    ```
 
 2. **Run the scaffold script:**
