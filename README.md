@@ -32,11 +32,11 @@ A production-ready Flutter starter template with feature-first architecture, com
 
 1. **Clone this repository:**
    ```bash
-   git clone flutter_starter_template <app_repo_name_in_your_local_machine>
+   git clone https://github.com/sgaikar1/flutter_starter_template.git <app_repo_name_in_your_local_machine>
    cd app_repo_name_in_your_local_machine
    ```
 
-2. **Run the scaffold script:**
+2. **Run the scaffold script:** considering app repo name is My Awesome App
    ```bash
    ./scripts/scaffold_new_app.sh \
      --name "My Awesome App" \
@@ -45,12 +45,12 @@ A production-ready Flutter starter template with feature-first architecture, com
      --color "#6200EE"
    ```
 
-3. **Run developer setup:**
+4. **Run developer setup:**
    ```bash
    ./scripts/dev_setup.sh
    ```
 
-4. **Run the app:**
+5. **Run the app:**
    ```bash
    flutter run
    ```
