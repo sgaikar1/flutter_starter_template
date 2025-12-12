@@ -1,3 +1,4 @@
+import '../../../../core/errors/app_error.dart';
 import '../../../../core/network/api_client.dart';
 import '../../../../core/network/api_result.dart';
 import '../../../../core/storage/storage_service.dart';
@@ -7,7 +8,7 @@ import '../../domain/repositories/auth_service.dart';
 import '../models/user_dto.dart';
 
 /// Mock implementation of AuthService for development.
-/// 
+///
 /// TODO: Replace with actual API calls in production.
 class AuthServiceImpl implements AuthService {
   AuthServiceImpl({
@@ -37,7 +38,7 @@ class AuthServiceImpl implements AuthService {
 
       if (token != null && userId != null) {
         _apiClient.setAuthToken(token);
-        
+
         // In a real app, you'd validate the token or fetch user data
         // For now, create a mock user
         _currentUser = User(
@@ -45,7 +46,7 @@ class AuthServiceImpl implements AuthService {
           email: 'saved@example.com',
           name: 'Saved User',
         );
-        
+
         _logger.info('Restored user session');
       }
     } catch (e, stackTrace) {
@@ -83,8 +84,10 @@ class AuthServiceImpl implements AuthService {
         name: _getNameFromEmail(email),
       );
 
-      const mockToken = 'mock_access_token_${DateTime}';
-      const mockRefreshToken = 'mock_refresh_token_${DateTime}';
+      final mockToken =
+          'mock_access_token_${DateTime.now().millisecondsSinceEpoch}';
+      final mockRefreshToken =
+          'mock_refresh_token_${DateTime.now().millisecondsSinceEpoch}';
 
       // Save tokens and user ID
       await _storage.setString(StorageKeys.authToken, mockToken);
@@ -99,12 +102,8 @@ class AuthServiceImpl implements AuthService {
 
       return Success(mockUser);
     } catch (e, stackTrace) {
-      _logger.error(
-        'Login failed',
-        error: e,
-        stackTrace: stackTrace,
-      );
-      return const Failure(
+      _logger.error('Login failed', error: e, stackTrace: stackTrace);
+      return Failure(
         AuthenticationError(
           message: 'Login failed. Please try again.',
           code: 'LOGIN_FAILED',
@@ -132,11 +131,7 @@ class AuthServiceImpl implements AuthService {
       _currentUser = null;
       _logger.info('Logout successful');
     } catch (e, stackTrace) {
-      _logger.error(
-        'Logout error',
-        error: e,
-        stackTrace: stackTrace,
-      );
+      _logger.error('Logout error', error: e, stackTrace: stackTrace);
       // Still clear local state even if API call fails
       _currentUser = null;
     }
@@ -147,7 +142,7 @@ class AuthServiceImpl implements AuthService {
     try {
       final refreshToken = await _storage.getString(StorageKeys.refreshToken);
       if (refreshToken == null) {
-        return const Failure(
+        return Failure(
           AuthenticationError(
             message: 'No refresh token available',
             code: 'NO_REFRESH_TOKEN',
@@ -167,21 +162,16 @@ class AuthServiceImpl implements AuthService {
       // Mock implementation
       await Future.delayed(const Duration(milliseconds: 500));
 
-      const newToken = 'refreshed_mock_token_${DateTime}';
+      final newToken =
+          'refreshed_mock_token_${DateTime.now().millisecondsSinceEpoch}';
       await _storage.setString(StorageKeys.authToken, newToken);
       _apiClient.setAuthToken(newToken);
 
       _logger.info('Token refresh successful');
       return const Success(null);
     } catch (e, stackTrace) {
-      _logger.error(
-        'Token refresh failed',
-        error: e,
-        stackTrace: stackTrace,
-      );
-      return Failure(
-        AuthenticationError.tokenExpired(),
-      );
+      _logger.error('Token refresh failed', error: e, stackTrace: stackTrace);
+      return Failure(AuthenticationError.tokenExpired());
     }
   }
 

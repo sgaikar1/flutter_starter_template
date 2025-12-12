@@ -1,26 +1,19 @@
 /// Base class for all application errors
 abstract class AppError implements Exception {
-  const AppError({
-    required this.message,
-    this.code,
-    this.stackTrace,
-  });
+  const AppError({required this.message, this.code, this.stackTrace});
 
   final String message;
   final String? code;
   final StackTrace? stackTrace;
 
   @override
-  String toString() => 'AppError: $message${code != null ? ' (Code: $code)' : ''}';
+  String toString() =>
+      'AppError: $message${code != null ? ' (Code: $code)' : ''}';
 }
 
 /// Network-related errors
 class NetworkError extends AppError {
-  const NetworkError({
-    required super.message,
-    super.code,
-    super.stackTrace,
-  });
+  const NetworkError({required super.message, super.code, super.stackTrace});
 
   factory NetworkError.noInternet() {
     return const NetworkError(
@@ -30,10 +23,7 @@ class NetworkError extends AppError {
   }
 
   factory NetworkError.timeout() {
-    return const NetworkError(
-      message: 'Request timeout',
-      code: 'TIMEOUT',
-    );
+    return const NetworkError(message: 'Request timeout', code: 'TIMEOUT');
   }
 
   factory NetworkError.serverError([String? details]) {
@@ -72,6 +62,13 @@ class AuthenticationError extends AppError {
       code: 'UNAUTHORIZED',
     );
   }
+
+  factory AuthenticationError.forbidden() {
+    return const AuthenticationError(
+      message: 'Access forbidden',
+      code: 'FORBIDDEN',
+    );
+  }
 }
 
 /// Validation-related errors
@@ -104,11 +101,7 @@ class ValidationError extends AppError {
 
 /// Cache-related errors
 class CacheError extends AppError {
-  const CacheError({
-    required super.message,
-    super.code,
-    super.stackTrace,
-  });
+  const CacheError({required super.message, super.code, super.stackTrace});
 
   factory CacheError.notFound() {
     return const CacheError(
@@ -127,11 +120,7 @@ class CacheError extends AppError {
 
 /// General application errors
 class GeneralError extends AppError {
-  const GeneralError({
-    required super.message,
-    super.code,
-    super.stackTrace,
-  });
+  const GeneralError({required super.message, super.code, super.stackTrace});
 
   factory GeneralError.unexpected([String? details]) {
     return GeneralError(
@@ -141,9 +130,6 @@ class GeneralError extends AppError {
   }
 
   factory GeneralError.notFound(String resource) {
-    return GeneralError(
-      message: '$resource not found',
-      code: 'NOT_FOUND',
-    );
+    return GeneralError(message: '$resource not found', code: 'NOT_FOUND');
   }
 }

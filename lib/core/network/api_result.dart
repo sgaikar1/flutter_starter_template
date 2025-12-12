@@ -1,8 +1,10 @@
+import '../errors/app_error.dart';
+
 /// Represents the result of an API call or operation.
-/// 
+///
 /// This is a sealed class with two variants: [Success] and [Failure].
 /// Use pattern matching to handle both cases.
-/// 
+///
 /// Example:
 /// ```dart
 /// final result = await apiClient.get<User>('/users/1');
@@ -24,15 +26,15 @@ sealed class ApiResult<T> {
 
   /// Gets the data if successful, otherwise returns null
   T? get dataOrNull => switch (this) {
-        Success(:final data) => data,
-        Failure() => null,
-      };
+    Success(:final data) => data,
+    Failure() => null,
+  };
 
   /// Gets the error if failed, otherwise returns null
   AppError? get errorOrNull => switch (this) {
-        Success() => null,
-        Failure(:final error) => error,
-      };
+    Success() => null,
+    Failure(:final error) => error,
+  };
 
   /// Transforms the data if this is a success
   ApiResult<R> map<R>(R Function(T data) transform) {

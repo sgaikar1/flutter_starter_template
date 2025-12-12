@@ -9,7 +9,7 @@ import '../../features/auth/presentation/pages/login_page.dart';
 class AppRouter {
   AppRouter(this._ref);
 
-  final Ref _ref;
+  final WidgetRef _ref;
 
   late final GoRouter router = GoRouter(
     initialLocation: '/login',
@@ -43,9 +43,7 @@ class AppRouter {
       GoRoute(
         path: '/settings',
         name: 'settings',
-        builder: (context, state) => const _PlaceholderPage(
-          title: 'Settings',
-        ),
+        builder: (context, state) => const _PlaceholderPage(title: 'Settings'),
       ),
     ],
     errorBuilder: (context, state) => _ErrorPage(error: state.error),
@@ -53,7 +51,8 @@ class AppRouter {
 
   /// Handles authentication-based redirects
   String? _handleRedirect(BuildContext context, GoRouterState state) {
-    final isAuthenticated = _ref.read(authNotifierProvider.notifier).isAuthenticated;
+    final isAuthenticated =
+        _ref.read(authNotifierProvider.notifier).isAuthenticated;
     final isLoggingIn = state.matchedLocation == '/login';
 
     // If not authenticated and not on login page, redirect to login
@@ -77,7 +76,7 @@ class _AuthStateListenable extends ChangeNotifier {
     _ref.listen(authNotifierProvider, (_, __) => notifyListeners());
   }
 
-  final Ref _ref;
+  final WidgetRef _ref;
 }
 
 /// Temporary placeholder page

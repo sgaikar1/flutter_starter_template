@@ -12,22 +12,14 @@ void main() async {
   // Initialize services
   await _initializeApp();
 
-  // Create a container for providers
-  final container = ProviderContainer();
-
   // Run app wrapped in ProviderScope
-  runApp(
-    UncontrolledProviderScope(
-      container: container,
-      child: App(routerRef: container),
-    ),
-  );
+  runApp(const ProviderScope(child: App()));
 }
 
 /// Initializes all app dependencies and services
 Future<void> _initializeApp() async {
   final logger = AppLogger.app;
-  
+
   try {
     logger.info('Initializing app...');
 
@@ -36,12 +28,8 @@ Future<void> _initializeApp() async {
 
     logger.info('App initialized successfully');
   } catch (e, stackTrace) {
-    logger.fatal(
-      'Failed to initialize app',
-      error: e,
-      stackTrace: stackTrace,
-    );
-    
+    logger.fatal('Failed to initialize app', error: e, stackTrace: stackTrace);
+
     // In production, you might want to show an error screen
     // or report to crash reporting service
     rethrow;

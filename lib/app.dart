@@ -11,21 +11,16 @@ final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.system);
 
 /// Main app widget
 class App extends ConsumerWidget {
-  const App({
-    required this.routerRef,
-    super.key,
-  });
-
-  final Ref routerRef;
+  const App({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    final router = AppRouter(routerRef).router;
+    final router = AppRouter(ref).router;
 
     return MaterialApp.router(
       // App configuration
-      title: '{{PROJECT_NAME}}',
+      title: 'AstroConnect',
       debugShowCheckedModeBanner: false,
 
       // Routing
@@ -43,12 +38,8 @@ class App extends ConsumerWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('hi'),
-      ],
+      supportedLocales: const [Locale('en'), Locale('hi')],
       locale: const Locale('en'), // TODO: Make configurable
-
       // Error handling
       builder: (context, child) {
         ErrorWidget.builder = (details) {
