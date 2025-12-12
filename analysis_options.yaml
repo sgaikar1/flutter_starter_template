@@ -183,5 +183,4 @@ linter:
     use_string_buffers: true
     use_test_throws_matchers: true
     use_to_and_as_if_applicable: true
-    valid_regexps: true
     void_checks: true
